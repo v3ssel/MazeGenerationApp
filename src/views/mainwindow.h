@@ -6,10 +6,9 @@
 #include <QApplication>
 #include <QFileDialog>
 #include <QMainWindow>
+#include <QMessageBox>
 #include <QPainter>
 #include <QTimer>
-#include <QtOpenGL>
-#include <QtOpenGLWidgets>
 
 #include "../controllers/controller_singleton.h"
 
@@ -20,29 +19,29 @@ class MainWindow;
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow {
-  Q_OBJECT
+    Q_OBJECT
 
- public:
-  explicit MainWindow(QWidget *parent = nullptr);
-  ~MainWindow();
+   public:
+    explicit MainWindow(QWidget *parent = nullptr);
+    ~MainWindow();
 
- private slots:
-  void MazeUploadButtonClicked();
-  void MazeDownloadButtonClicked();
-  void MazeInitRandomButtonClicked();
-  void CaveUploadButtonClicked();
-  void CaveInitRandomButtonClicked();
-  void CaveStepRenderButtonClicked();
-  void CaveAutoRenderButtonClicked();
-  void CaveStopRenderButtonClicked();
-  void TimerCallback();
+   private slots:
+    void MazeUploadButtonClicked();
+    void MazeDownloadButtonClicked();
+    void MazeInitRandomButtonClicked();
+    void CaveUploadButtonClicked();
+    void CaveInitRandomButtonClicked();
+    void CaveStepRenderButtonClicked();
+    void CaveAutoRenderButtonClicked();
+    void CaveStopRenderButtonClicked();
+    void TimerCallback();
 
- private:
-  Ui::MainWindow *ui_;
-  QTimer *timer_;
-  bool emergency_stop_;
+   private:
+    Ui::MainWindow *ui_;
+    QTimer *timer_;
+    bool emergency_stop_;
 
-  void ShowErrorMessage(const std::exception &);
+    void ShowErrorMessage(const std::exception &);
 };
 
 #endif  // CPP4_3DVIEWER_V2_0_2_SRC_VIEWS_MAINWINDOW_H

@@ -12,23 +12,23 @@
 namespace s21 {
 
 class MazeSaver {
- public:
-  explicit MazeSaver(Maze *maze);
-  void Save();
-  void SetFilePath(const std::string &);
-  void SetMaze(Maze *maze);
+   public:
+    explicit MazeSaver(Maze *maze);
+    void Save();
+    void SetFilePath(const std::string &);
+    void SetMaze(Maze *maze);
 
- private:
-  Maze *maze_;
-  std::string filepath_;
-  std::vector<Border> right_matrix_;
-  std::vector<Border> bottom_matrix_;
+   private:
+    Maze *maze_;
+    std::string filepath_;
+    std::vector<Border> right_matrix_;
+    std::vector<Border> bottom_matrix_;
 
-  void UnmergeMatricies();
-  void WriteSize(std::ofstream &);
-  void WriteMatrixRight(std::ofstream &);
-  void WriteMatrixBottom(std::ofstream &);
-  void Reset();
+    void UnmergeMatricies();
+    void WriteSize(std::ofstream &);
+    void WriteMatrixRight(std::ofstream &);
+    void WriteMatrixBottom(std::ofstream &);
+    void Reset();
 };
 
 }  // namespace s21

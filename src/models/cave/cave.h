@@ -15,33 +15,33 @@
 namespace s21 {
 
 class Cave {
- public:
-  Cave();
-  Cave(int rows, int cols);
+   public:
+    Cave();
+    Cave(int rows, int cols);
 
-  int GetRows();
-  int GetCols();
-  void SetRows(int rows);
-  void SetCols(int cols);
-  std::vector<unsigned> &GetMatrix();
+    int GetRows();
+    int GetCols();
+    void SetRows(int rows);
+    void SetCols(int cols);
+    std::vector<unsigned> &GetMatrix();
 
-  void Generate(int, int, float);
-  bool StepRender(unsigned, unsigned);
-  void ParseFromFile(std::string);
+    void Generate(int, int, float);
+    bool StepRender(unsigned, unsigned);
+    void ParseFromFile(std::string);
 
- private:
-  std::vector<unsigned> matrix_;
-  int rows_;
-  int cols_;
-  unsigned die_limit_;
-  unsigned born_limit_;
+   private:
+    std::vector<unsigned> matrix_;
+    int rows_;
+    int cols_;
+    unsigned die_limit_;
+    unsigned born_limit_;
 
-  void Clear();
-  bool CompareCaves(Cave *, Cave *);
-  int GetAliveNeigborsCount(Cave *, int, int);
-  void ParseSize(const std::string &);
-  void ParseMatrix(const std::string &);
-  void ApplyRules(unsigned index, unsigned alive_neighbors_count);
+    void Clear();
+    bool CompareCaves(Cave *, Cave *);
+    int GetAliveNeigborsCount(Cave *, int, int);
+    void ParseSize(const std::string &);
+    void ParseMatrix(const std::string &);
+    void ApplyRules(unsigned index, unsigned alive_neighbors_count);
 };
 
 }  // namespace s21

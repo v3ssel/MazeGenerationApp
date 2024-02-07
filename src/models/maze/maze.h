@@ -11,29 +11,29 @@
 namespace s21 {
 
 class Maze {
- public:
-  Maze();
-  Maze(int rows, int cols);
+   public:
+    Maze();
+    Maze(int rows, int cols);
 
-  int GetRows();
-  int GetCols();
-  void SetRows(int);
-  void SetCols(int);
-  void Push(Border);
-  std::vector<Border>& GetMatrix();
-  void Clear();
-  bool CheckBorder(int, int, int, int, int, int, int);
-  bool IsIdeal();
-  std::vector<Vector2D> Resolve(Vector2D, Vector2D);
+    int GetRows();
+    int GetCols();
+    void SetRows(int);
+    void SetCols(int);
+    void Push(Border);
+    std::vector<Border>& GetMatrix();
+    void Clear();
+    bool CheckBorder(int, int, int, int, int, int, int);
+    bool IsIdeal();
+    std::vector<Vector2D> Resolve(Vector2D, Vector2D);
 
- private:
-  int rows_;
-  int cols_;
-  std::vector<Border> matrix_;
+   private:
+    int rows_;
+    int cols_;
+    std::vector<Border> matrix_;
 
-  std::vector<int> FindPath(Vector2D, Vector2D);
-  std::vector<Vector2D> FindSolution(Vector2D, Vector2D,
-                                     const std::vector<int>&);
+    std::vector<int> FindPath(Vector2D, Vector2D);
+    std::vector<Vector2D> FindSolution(Vector2D, Vector2D,
+                                       const std::vector<int>&);
 };
 
 }  // namespace s21

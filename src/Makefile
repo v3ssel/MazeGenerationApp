@@ -4,30 +4,11 @@ EXE = Maze.exe
 TEST_EXE = MazeTests.exe
 DISTDIR = ../distributive
 GCOVAPPLE =
-COMPILER21 = 
-
-HEADERS = \
-	$(PROJECTDIR)/views/*.h \
-	$(PROJECTDIR)/controllers/*.h \
-	$(PROJECTDIR)/models/*/*.h \
-	$(PROJECTDIR)/models/*/*.h \
-	$(PROJECTDIR)/models/*.h
-
-
-SOURCES = \
-	$(PROJECTDIR)/main.cc \
-	$(PROJECTDIR)/views/*.cc \
-	$(PROJECTDIR)/controllers/*.cc \
-	$(PROJECTDIR)/models/*/*.cc \
-	$(PROJECTDIR)/models/*/*.cc \
-	$(PROJECTDIR)/tests/*.cc \
-
 
 ifeq ($(shell uname), Darwin)
 	EXE = Maze
 	TEST_EXE = MazeTests
 	GCOVAPPLE = --ignore-errors inconsistent,mismatch
-	COMPILER21 = -DCMAKE_CXX_COMPILER="/usr/local/bin/g++"
 endif
 
 ifeq ($(shell uname), Linux)
@@ -59,13 +40,13 @@ uninstall: clean
 
 tests: $(BUILDDIR)-testing
 	cd $(BUILDDIR)-testing && \
-	cmake .. -DTESTING=ON $(COMPILER21) -G "Unix Makefiles" && \
+	cmake .. -DTESTING=ON -G "Unix Makefiles" && \
 	cmake --build . --config=RelWithDebInfo
 
 
 gcov_report: $(BUILDDIR)-coverage
 	cd $(BUILDDIR)-coverage && \
-	cmake .. -DTESTING=ON -DCOVERAGE=ON $(COMPILER21) -G "Unix Makefiles" && \
+	cmake .. -DTESTING=ON -DCOVERAGE=ON -G "Unix Makefiles" && \
 	cmake --build . --config=RelWithDebInfo
 	./$(TEST_EXE)
 	lcov -t "$(TEST_EXE)" -o test.info --no-external -c -b . -d $(BUILDDIR)-coverage $(GCOVAPPLE)
@@ -81,7 +62,7 @@ dist:
 
 
 check:
-	clang-format --verbose -n */*.cc */*.h */*/*.cc */*/*.h
+	clang-format --verbose -i */*.cc */*.h */*/*.cc */*/*.h
 
 
 $(BUILDDIR)-%:

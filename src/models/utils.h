@@ -14,28 +14,29 @@
 namespace s21 {
 
 class Utils {
- public:
-  static bool RandomChoice(float chance) {
-    std::mt19937 gen(std::random_device{}());
-    std::bernoulli_distribution bd(chance);
+   public:
+    static bool RandomChoice(float chance) {
+        std::mt19937 gen(std::random_device{}());
+        std::bernoulli_distribution bd(chance);
 
-    return bd(gen);
-  }
+        return bd(gen);
+    }
 
-  static void CheckAndFixEndLine(const std::string &filepath) {
-    FILE *fp = fopen(filepath.c_str(), "r+");
-    if (fp == NULL) {
-      throw std::invalid_argument("Failed to open file: " +  // LCOV_EXCL_LINE
-                                  filepath);                 // LCOV_EXCL_LINE
+    static void CheckAndFixEndLine(const std::string &filepath) {
+        FILE *fp = fopen(filepath.c_str(), "r+");
+        if (fp == NULL) {
+            throw std::invalid_argument(
+                "Failed to open file: " +  // LCOV_EXCL_LINE
+                filepath);                 // LCOV_EXCL_LINE
+        }
+        fseek(fp, -1, SEEK_END);
+        char c = fgetc(fp);
+        if (c != '\n') {
+            fseek(fp, -1, SEEK_END);  // LCOV_EXCL_LINE
+            fputc('\n', fp);          // LCOV_EXCL_LINE
+        }
+        fclose(fp);
     }
-    fseek(fp, -1, SEEK_END);
-    char c = fgetc(fp);
-    if (c != '\n') {
-      fseek(fp, -1, SEEK_END);  // LCOV_EXCL_LINE
-      fputc('\n', fp);          // LCOV_EXCL_LINE
-    }
-    fclose(fp);
-  }
 };
 
 }  // namespace s21

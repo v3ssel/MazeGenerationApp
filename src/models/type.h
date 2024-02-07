@@ -6,17 +6,17 @@
 namespace s21 {
 
 enum Border {
-  NO_BORDER = 0,
-  RIGHT_BORDER,
-  BOTTOM_BORDER,
-  BOTH_BORDER,
+    NO_BORDER = 0,
+    RIGHT_BORDER,
+    BOTTOM_BORDER,
+    BOTH_BORDER,
 };
 
 struct Vector2D {
-  size_t x_;
-  size_t y_;
+    size_t x_;
+    size_t y_;
 
-  Vector2D(size_t x, size_t y) : x_(x), y_(y) {}
+    Vector2D(size_t x, size_t y) : x_(x), y_(y) {}
 };
 
 }  // namespace s21

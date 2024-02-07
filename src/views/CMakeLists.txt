@@ -11,7 +11,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_compile_options(-Wall -Werror -Wextra)
 
-find_package(Qt6 REQUIRED COMPONENTS Widgets OpenGL Core Gui OpenGLWidgets)
+find_package(Qt6 REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
     main.cc
@@ -38,9 +38,5 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt6::Widgets
-    Qt6::Core
-    Qt6::Gui
-    Qt6::OpenGL
-    Qt6::OpenGLWidgets
     MazeController
 )

@@ -12,25 +12,25 @@
 namespace s21 {
 
 class MazeGenerator {
- public:
-  const int kEmptyCell = -1;
+   public:
+    const int kEmptyCell = -1;
 
-  MazeGenerator();
-  Maze GenerateMaze(int rows, int cols, float right_wall_chance = 0.5,
-                    float bottom_wall_chance = 0.5);
+    MazeGenerator();
+    Maze GenerateMaze(int rows, int cols, float right_wall_chance = 0.5,
+                      float bottom_wall_chance = 0.5);
 
- private:
-  size_t next_set_;
-  std::unordered_map<size_t, std::vector<size_t>> sets_;
-  std::vector<int> cells_;
+   private:
+    size_t next_set_;
+    std::unordered_map<size_t, std::vector<size_t>> sets_;
+    std::vector<int> cells_;
 
-  void FillEmptyCells(int cols);
-  void AddRightWalls(Maze& maze, int row, float right_wall_chance);
-  void AddBottomWalls(Maze& maze, int row, float bottom_wall_chance);
-  void AddEndLine(Maze& maze, float right_wall_chance);
+    void FillEmptyCells(int cols);
+    void AddRightWalls(Maze& maze, int row, float right_wall_chance);
+    void AddBottomWalls(Maze& maze, int row, float bottom_wall_chance);
+    void AddEndLine(Maze& maze, float right_wall_chance);
 
-  void MergeSets(size_t set1, size_t set2);
-  void Clear();
+    void MergeSets(size_t set1, size_t set2);
+    void Clear();
 };
 
 }  // namespace s21

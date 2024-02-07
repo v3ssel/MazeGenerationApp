@@ -13,23 +13,23 @@
 namespace s21 {
 
 class MazeParser {
- public:
-  explicit MazeParser(Maze *maze) : maze_(maze){};
-  void Parse();
-  void SetFilePath(const std::string &);
+   public:
+    explicit MazeParser(Maze *maze) : maze_(maze){};
+    void Parse();
+    void SetFilePath(const std::string &);
 
- private:
-  Maze *maze_;
-  std::string filepath_;
-  std::vector<Border> right_matrix_;
-  std::vector<Border> bottom_matrix_;
-  int current_line_ = 0;
+   private:
+    Maze *maze_;
+    std::string filepath_;
+    std::vector<Border> right_matrix_;
+    std::vector<Border> bottom_matrix_;
+    int current_line_ = 0;
 
-  void ParseSize(const std::string &);
-  void ParseMatrixRight(const std::string &);
-  void ParseMatrixBottom(const std::string &);
-  void MergeMatricies();
-  void Reset();
+    void ParseSize(const std::string &);
+    void ParseMatrixRight(const std::string &);
+    void ParseMatrixBottom(const std::string &);
+    void MergeMatricies();
+    void Reset();
 };
 
 }  // namespace s21
