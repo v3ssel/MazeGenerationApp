@@ -14,7 +14,7 @@ add_compile_options(-Wall -Werror -Wextra)
 find_package(Qt6 REQUIRED COMPONENTS Widgets OpenGL Core Gui OpenGLWidgets)
 
 set(PROJECT_SOURCES
-    ../main.cc
+    main.cc
     mainwindow.h
     mainwindow.cc
     mainwindow.ui

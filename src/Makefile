@@ -70,11 +70,6 @@ gcov_report: $(BUILDDIR)-coverage
 	./$(TEST_EXE)
 	lcov -t "$(TEST_EXE)" -o test.info --no-external -c -b . -d $(BUILDDIR)-coverage $(GCOVAPPLE)
 	genhtml -o report test.info $(GCOVAPPLE)
-	open report/index.html
-
-
-dvi:
-	open ./README.pdf
 
 
 dist:
@@ -86,20 +81,13 @@ dist:
 
 
 check:
-	clang-format -n --style="Google" $(SOURCES) $(HEADERS)
-	cppcheck --std=c++17 --language=c++ --enable=all --library=qt --suppress=unusedStructMember --suppress=unusedFunction --suppress=missingInclude --suppress=missingIncludeSystem $(SOURCES) $(HEADERS)
-
-
-leaks: install tests
-	leaks --atExit -- ./$(TEST_EXE)
-	leaks --atExit -- "./build/Maze.app/Contents/MacOS/Maze"
+	clang-format --verbose -n */*.cc */*.h */*/*.cc */*/*.h
 
 
 $(BUILDDIR)-%:
 	mkdir -p $@
 
 
-.PHONY: clean test dvi dist check leaks gcov_report
 clean:
 	@rm -rf $(BUILDDIR)-*
 	@rm -rf report *.info
